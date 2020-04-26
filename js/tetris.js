@@ -290,6 +290,25 @@ class Figure {
 window.onload = main = () => {
   const canvas = document.getElementById("tetris");
   const gameTable = new GameTable({ ctx: canvas.getContext("2d") });
+  const buttons = {
+    left: document.getElementById("btnLeft"),
+    up: document.getElementById("btnUp"),
+    down: document.getElementById("btnDown"),
+    right: document.getElementById("btnRight")
+  };
   document.addEventListener("keydown", gameTable.control);
+
+  buttons.left.addEventListener("click", () =>
+    gameTable.control({ code: "ArrowLeft" })
+  );
+  buttons.up.addEventListener("click", () =>
+    gameTable.control({ code: "ArrowUp" })
+  );
+  buttons.down.addEventListener("click", () =>
+    gameTable.control({ code: "ArrowDown" })
+  );
+  buttons.right.addEventListener("click", () =>
+    gameTable.control({ code: "ArrowRight" })
+  );
   setTimeout(gameTable.tick, 1000);
 };
